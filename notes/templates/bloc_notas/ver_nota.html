@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'bloc_notas/styles.css' %}">
+    <title>Nota</title>
+</head>
+<body>
+    <div id="container-user">
+
+        <div class="titulo">
+            <p>Nota:</p>
+        </div>
+        <div id="contenido-nota">
+            <p>{{ contenido }}</p>
+        </div>
+    </div>
+</body>
+</html>

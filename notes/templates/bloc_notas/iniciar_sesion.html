@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'bloc_notas/styles.css' %}">
+    <title>Bloc de notas</title>
+</head>
+<body>
+    <div class="title-logo">
+        <img src="{% static 'bloc_notas/logo.png' %}" alt="Logo de la aplicación de notas"/>
+        <h1 class="page-title">My notes</h1>
+    </div>
+    <div id="container">
+        <div class="credenciales">
+            <div class="subtitle">Iniciar sesión</div>
+            <form method="post" action="{% url 'iniciar_sesion' %}">
+                {% csrf_token %}
+                <div class="label">
+                    <div class="label-text"><i class="fas fa-user icon"></i> User</div>
+                    <div class="input-group">
+                        <input class="user" name="user" type="text" placeholder="Nombre de usuario">
+                    </div>
+                </div>
+
+                <div class="label">
+                    <div class="label-text"><i class="fas fa-lock icon"></i> Password</div>
+                    <div class="input-group">
+                        <input class="user" name="password" type="password" placeholder="Contraseña">
+                    </div>
+                </div>
+
+                <div class="submit">
+                    <button type="submit"><p id="button">Iniciar sesión</p></button>
+                </div>
+            </form>
+        
+        </div>
+        <form method="post" action="{% url 'crear_cuenta' %}">
+            {% csrf_token %}
+            <div class="submit">
+                <button type="submit"><p id="button">Crear cuenta</p></button>
+            </div>
+        </form>
+        
+        
+        <div class="respuesta">
+            {% if notfound %}
+            <p>{{ notfound }}</p>  <!-- Mostramos el mensaje de error si las credenciales son incorrectas -->
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
